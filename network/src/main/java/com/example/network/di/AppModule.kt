@@ -30,10 +30,12 @@ import com.example.network.domain.usecase.GetProjectsUseCase
 import com.example.network.domain.usecase.GetUserIdUseCase
 import com.example.network.domain.usecase.GetUserUseCase
 import com.example.network.domain.usecase.LoadBucketIdUseCase
+import com.example.network.domain.usecase.LoadEmailUseCase
 import com.example.network.domain.usecase.LoadTokenUseCase
 import com.example.network.domain.usecase.LoginUseCase
 import com.example.network.domain.usecase.RegisterUseCase
 import com.example.network.domain.usecase.SaveBucketIdUseCase
+import com.example.network.domain.usecase.SaveEmailUseCase
 import com.example.network.domain.usecase.SaveTokenUseCase
 import com.example.network.domain.usecase.UpdateCartUseCase
 import dagger.Module
@@ -203,5 +205,15 @@ class AppModule {
     @Provides
     fun provideCreateProjectUseCase(projectRepository: ProjectRepository): CreateProjectUseCase{
         return CreateProjectUseCase(projectRepository)
+    }
+
+    @Provides
+    fun provideSaveEmailUseCase(sharedPrefsRepository: SharedPrefsRepository): SaveEmailUseCase{
+        return SaveEmailUseCase(sharedPrefsRepository)
+    }
+
+    @Provides
+    fun provideLoadEmailUseCase(sharedPrefsRepository: SharedPrefsRepository): LoadEmailUseCase{
+        return LoadEmailUseCase(sharedPrefsRepository)
     }
 }
