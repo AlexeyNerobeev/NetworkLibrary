@@ -27,16 +27,17 @@ import com.example.network.domain.usecase.GetNewsUseCase
 import com.example.network.domain.usecase.GetProductByIdUseCase
 import com.example.network.domain.usecase.GetProductsUseCase
 import com.example.network.domain.usecase.GetProjectsUseCase
-import com.example.network.domain.usecase.GetUserIdUseCase
 import com.example.network.domain.usecase.GetUserUseCase
 import com.example.network.domain.usecase.LoadBucketIdUseCase
 import com.example.network.domain.usecase.LoadEmailUseCase
 import com.example.network.domain.usecase.LoadTokenUseCase
+import com.example.network.domain.usecase.LoadUserIdUseCase
 import com.example.network.domain.usecase.LoginUseCase
 import com.example.network.domain.usecase.RegisterUseCase
 import com.example.network.domain.usecase.SaveBucketIdUseCase
 import com.example.network.domain.usecase.SaveEmailUseCase
 import com.example.network.domain.usecase.SaveTokenUseCase
+import com.example.network.domain.usecase.SaveUserIdUseCase
 import com.example.network.domain.usecase.UpdateCartUseCase
 import dagger.Module
 import dagger.Provides
@@ -153,11 +154,6 @@ class AppModule {
     }
 
     @Provides
-    fun provideGetUserIdUseCase(sharedPrefsRepository: SharedPrefsRepository): GetUserIdUseCase{
-        return GetUserIdUseCase(sharedPrefsRepository)
-    }
-
-    @Provides
     fun provideGetUserUseCase(userRepository: UserRepository): GetUserUseCase{
         return GetUserUseCase(userRepository)
     }
@@ -215,5 +211,15 @@ class AppModule {
     @Provides
     fun provideLoadEmailUseCase(sharedPrefsRepository: SharedPrefsRepository): LoadEmailUseCase{
         return LoadEmailUseCase(sharedPrefsRepository)
+    }
+
+    @Provides
+    fun provideSaveUserIdUseCase(sharedPrefsRepository: SharedPrefsRepository): SaveUserIdUseCase{
+        return SaveUserIdUseCase(sharedPrefsRepository)
+    }
+
+    @Provides
+    fun provideLoadUserIdUseCase(sharedPrefsRepository: SharedPrefsRepository): LoadUserIdUseCase{
+        return LoadUserIdUseCase(sharedPrefsRepository)
     }
 }
