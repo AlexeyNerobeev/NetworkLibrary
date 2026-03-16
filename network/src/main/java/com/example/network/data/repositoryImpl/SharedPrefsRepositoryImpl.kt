@@ -52,4 +52,19 @@ class SharedPrefsRepositoryImpl(context: Context): SharedPrefsRepository {
             bucketId
         }
     }
+
+    override fun loadEmail(): String {
+        val email = sharedPreferences.getString("email", null)
+        return if(email.isNullOrEmpty()){
+            ""
+        } else{
+            email
+        }
+    }
+
+    override fun saveEmail(email: String) {
+        if(email.isNotEmpty()){
+            sharedPreferences.edit{ putString("email", email)}
+        }
+    }
 }

@@ -10,4 +10,6 @@ interface SharedPrefsRepository {
     fun deleteToken()
     fun saveBucketId(id: String)
     fun loadBucketId(): String
+    fun saveEmail(email: String)
+    fun loadEmail(): String
 }

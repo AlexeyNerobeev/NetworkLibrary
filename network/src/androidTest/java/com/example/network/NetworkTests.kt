@@ -86,7 +86,7 @@ class NetworkTests {
     @Test
     fun loginTest() = runTest{
         val login = loginUseCase.invoke(
-            identity = "qwe@mail.ru",
+            identity = "qwe @mail.ru",
             password = "Password 123$"
         )
         Log.i("login", login.toString())
