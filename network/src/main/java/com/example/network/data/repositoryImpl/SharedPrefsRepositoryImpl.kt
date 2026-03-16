@@ -11,7 +11,6 @@ class SharedPrefsRepositoryImpl(context: Context): SharedPrefsRepository {
     override fun saveToken(responseAuth: ResponseAuth) {
         if(responseAuth.token.isNotEmpty()){
             sharedPreferences.edit{ putString("token", responseAuth.toDto().token)}
-            sharedPreferences.edit { putString("userID", responseAuth.toDto().record.id) }
         }
     }
 
@@ -21,16 +20,6 @@ class SharedPrefsRepositoryImpl(context: Context): SharedPrefsRepository {
             ""
         } else{
             token
-        }
-    }
-
-
-    override fun getUserId(): String {
-        val userId = sharedPreferences.getString("userID", null)
-        return if(userId.isNullOrEmpty()){
-            ""
-        } else{
-            userId
         }
     }
 
@@ -65,6 +54,21 @@ class SharedPrefsRepositoryImpl(context: Context): SharedPrefsRepository {
     override fun saveEmail(email: String) {
         if(email.isNotEmpty()){
             sharedPreferences.edit{ putString("email", email)}
+        }
+    }
+
+    override fun loadUserId(): String {
+        val id = sharedPreferences.getString("userID", null)
+        return if(id.isNullOrEmpty()){
+            ""
+        } else{
+            id
+        }
+    }
+
+    override fun saveUserId(id: String) {
+        if(id.isNotEmpty()){
+            sharedPreferences.edit{putString("userID", id)}
         }
     }
 }
