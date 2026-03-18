@@ -19,6 +19,7 @@ import com.example.network.domain.repository.ProjectRepository
 import com.example.network.domain.repository.SharedPrefsRepository
 import com.example.network.domain.repository.UserRepository
 import com.example.network.domain.usecase.CreateCartUseCase
+import com.example.network.domain.usecase.CreateOrderUseCase
 import com.example.network.domain.usecase.CreateProjectUseCase
 import com.example.network.domain.usecase.DeleteTokenUseCase
 import com.example.network.domain.usecase.DeleteUserUseCase
@@ -119,8 +120,8 @@ class AppModule {
     }
 
     @Provides
-    fun provideCreateOrderUseCase(cartRepository: CartRepository): CreateCartUseCase{
-        return CreateCartUseCase(cartRepository)
+    fun provideCreateOrderUseCase(orderRepository: OrderRepository): CreateOrderUseCase{
+        return CreateOrderUseCase(orderRepository)
     }
 
     @Provides
